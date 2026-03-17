@@ -634,7 +634,6 @@ mark { background: rgba(155,100,30,0.25); color: inherit; border-radius: 2px; }
   <div id="topbar">
     <div class="logo" onclick="showAdhyayaList()">
       पिङ्गलछन्दःशास्त्रम्
-      <span>Piṅgala · Chandaḥśāstram</span>
     </div>
     <div class="topbar-sep"></div>
 
@@ -781,7 +780,7 @@ function enterApp() {
 // ═══════════════════════════════════════════════════════
 function buildSidebar() {
   const nav = document.getElementById('sidebar');
-  let h = `<div class="nav-head">सूची · Contents</div>
+  
     <div class="nav-a" id="nav-home" onclick="showAdhyayaList()">॰ अध्यायसूची</div>`;
   h += `<div class="nav-head">अध्यायाः · Adhyāyāḥ</div>`;
   for (let a = 1; a <= 8; a++) {
