@@ -704,6 +704,9 @@ mark { background: rgba(155,100,30,0.25); color: inherit; border-radius: 2px; }
 </div>
 
 <script>
+   function toDev(num) {
+  return num.toString().replace(/\d/g, d => "०१२३४५६७८९"[d]);
+}
 // ═══════════════════════════════════════════════════════
 // DATA
 // ═══════════════════════════════════════════════════════
