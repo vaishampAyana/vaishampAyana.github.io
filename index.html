@@ -637,11 +637,17 @@ mark { background: rgba(155,100,30,0.25); color: inherit; border-radius: 2px; }
       <span>Piṅgala · Chandaḥśāstram</span>
     </div>
     <div class="topbar-sep"></div>
-    <div id="search-wrap">
-      <input type="text" id="q" placeholder="सूत्रं खोजें… · Search sutras…" onkeydown="if(event.key==='Enter')doSearch()">
-      <button onclick="doSearch()">खोज</button>
-    </div>
-    <button id="btn-home-top" onclick="document.getElementById('splash').style.display='flex';document.getElementById('app').style.display='none';">← गृहम्</button>
+
+<div id="search-wrap" style="margin: 0 auto;">
+  <input type="text" id="q" placeholder="सूत्र खोजें… · Search sūtra…" onkeydown="if(event.key==='Enter')doSearch()">
+  <button onclick="doSearch()">Search</button>
+</div>
+
+<button id="btn-home-top"
+  style="margin-left: 0;"
+  onclick="document.getElementById('splash').style.display='flex';document.getElementById('app').style.display='none';">
+  ← गृहम्
+</button>
   </div>
 
   <div id="shell">
