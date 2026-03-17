@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>पिङ्गलछन्दःशास्त्रम् — Piṅgala Chandaḥśāstram</title>
+<title>पिङ्गलछन्दःशास्त्रम्</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -618,7 +618,6 @@ mark { background: rgba(155,100,30,0.25); color: inherit; border-radius: 2px; }
   <div class="splash-ornament">॥ हरिःॐ॥</div>
   <div class="splash-om">ॐ</div>
   <h1 class="splash-title">पिङ्गलछन्दःशास्त्रम्</h1>
-  <p class="splash-title-iast">Piṅgala-Chandaḥśāstram · Mṛtasañjīvanī-Ṭīkayā Saha</p>
   <div class="splash-divider"></div>
   <div class="splash-shlokas" id="splash-shlokas">
     <!-- filled by JS -->
@@ -632,22 +631,20 @@ mark { background: rgba(155,100,30,0.25); color: inherit; border-radius: 2px; }
 <div id="app">
   <!-- TOP BAR -->
   <div id="topbar">
-    <div class="logo" onclick="showAdhyayaList()">
-      पिङ्गलछन्दःशास्त्रम्
+       <button id="btn-home-top"
+  style="margin-right: 0;"
+  onclick="document.getElementById('splash').style.display='flex';document.getElementById('app').style.display='none';">
+  पिङ्गलछन्दःशास्त्रम्
+</button>
+      
     </div>
     <div class="topbar-sep"></div>
 
 <div id="search-wrap" style="margin: 0 auto;">
-  <input type="text" id="q" placeholder="सूत्र खोजें… · Search sūtra…" onkeydown="if(event.key==='Enter')doSearch()">
+  <input type="text" id="q" placeholder="सूत्र खोजें… | Search sūtra…" onkeydown="if(event.key==='Enter')doSearch()">
   <button onclick="doSearch()">Search</button>
 </div>
 
-<button id="btn-home-top"
-  style="margin-left: 0;"
-  onclick="document.getElementById('splash').style.display='flex';document.getElementById('app').style.display='none';">
-  ← गृहम्
-</button>
-  </div>
 
   <div id="shell">
     <!-- SIDEBAR -->
