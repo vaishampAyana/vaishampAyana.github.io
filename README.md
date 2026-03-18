@@ -1,2 +1,2 @@
-# chandassastra
-Chandas śāstra
+# chandaśśastra
+Chandaśśāstra
