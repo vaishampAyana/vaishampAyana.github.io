@@ -854,26 +854,13 @@ function buildSidebar(){
         <span class="nav-num">${_d(s.a)}.${_d(s.n)}</span>${s.s}</div>`;
     h+=`</div>`;
   }
-  h+=`<div class="nav-head" style="cursor:pointer;user-select:none" onclick="toggleNavMore()" id="nav-more-toggle">
-      <span id="nav-more-arrow" style="font-size:.6rem;margin-right:.3rem">▶</span> अन्यत् · More
-    </div>
-    <div class="nav-sub" id="nav-sub-more">
-      <div class="nav-a" id="nav-vyakhya" onclick="showVyakhya()">॰ व्याख्यान्वेषणम्</div>
-      <div class="nav-a" id="nav-about" onclick="showAbout()">॰ अस्माकम् विषये</div>
-      <div class="nav-a" id="nav-feedback" onclick="showFeedback()">॰ प्रतिक्रिया</div>
-    </div>`;
+  h+=`<div class="nav-head">अन्यत् · More</div>
+    <div class="nav-a" id="nav-vyakhya" onclick="showVyakhya()">॰ व्याख्यान्वेषणम्</div>
+    <div class="nav-a" id="nav-about" onclick="showAbout()">॰ अस्माकम् विषये</div>
+    <div class="nav-a" id="nav-feedback" onclick="showFeedback()">॰ प्रतिक्रिया</div>`;
   nav.innerHTML=h;
   _wrapNav();
 }
-function toggleNavMore(){
-  const sub = document.getElementById('nav-sub-more');
-  const arrow = document.getElementById('nav-more-arrow');
-  if(!sub) return;
-  const isOpen = sub.classList.contains('open');
-  sub.classList.toggle('open');
-  if(arrow) arrow.textContent = isOpen ? '▶' : '▼';
-}
-
 function toggleNavAdhyaya(a){
   for(let i=1;i<=8;i++) if(i!==a) document.getElementById('nav-sub-'+i)?.classList.remove('open');
   document.getElementById('nav-sub-'+a)?.classList.toggle('open');
