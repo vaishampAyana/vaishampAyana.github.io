@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pingala-chandas-v5';
+const CACHE_NAME = 'pingala-chandas-v6';
 
 self.addEventListener('install', event => {
   self.skipWaiting();
