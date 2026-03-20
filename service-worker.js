@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pingala-chandas-v10';
+const CACHE_NAME = 'pingala-chandas-v11';
 
 self.addEventListener('message', event => {
   if(event.data?.type === 'SKIP_WAITING') self.skipWaiting();
