@@ -419,12 +419,12 @@ mark{background:rgba(139,26,26,.15);color:inherit;border-radius:2px}
   <div id="topbar">
     <div class="logo" onclick="goSplash()" style="cursor:pointer">
       पिङ्गलछन्दःशास्त्रम्
-      <span>Piṅgala · Chandaḥśāstram</span>
+      <span>Chandaśśāstram</span>
     </div>
     <div class="topbar-sep"></div>
     <div id="search-wrap">
-      <input type="text" id="q" placeholder="सूत्रं खोजें…" onkeydown="if(event.key==='Enter')doSearch()">
-      <button onclick="doSearch()">खोज</button>
+      <input type="text" id="q" placeholder="सूत्रमन्वेष्यताम्" onkeydown="if(event.key==='Enter')doSearch()">
+      <button onclick="doSearch()">Search</button>
     </div>
     <button id="hamburger" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   </div>
@@ -436,7 +436,12 @@ mark{background:rgba(139,26,26,.15);color:inherit;border-radius:2px}
 
       <!-- Adhyaya list -->
       <div id="view-adhyaya-list" class="view show">
-        <div class="view-title">पिङ्गलछन्दःशास्त्रम्</div>
+        <div class="view-title">मङ्गलाचरणम्</div>
+        <style>
+.view-title {
+  text-align: center;
+}
+</style>
         <div class="view-sub">PIṄGALA · CHANDAḤŚĀSTRAM · ८ ADHYĀYĀḤ · ३०९ SŪTRĀṆI</div>
         <p class="view-desc" id="intro-text"></p>
         <div id="adhyaya-cards"></div>
