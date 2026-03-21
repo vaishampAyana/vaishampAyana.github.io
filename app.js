@@ -7,14 +7,14 @@ let INTRO = '', SUTRAS = [], BY_ADHYAYA = {}, FLAT = [];
 let currentSutraIdx = 0;
 
 const ADHYAYA_META = {
-  1:{dev:"प्रथमोऽध्यायः",iast:"Prathamo'dhyāyaḥ",topic:"संज्ञाप्रकरणम् — Definitions of Gaṇas & Syllable Weight"},
-  2:{dev:"द्वितीयोऽध्यायः",iast:"Dvitīyo'dhyāyaḥ",topic:"छन्दःप्रकरणम् — Classification of Metres"},
-  3:{dev:"तृतीयोऽध्यायः",iast:"Tṛtīyo'dhyāyaḥ",topic:"वैदिकछन्दःप्रकरणम् — Vedic Metres"},
-  4:{dev:"चतुर्थोऽध्यायः",iast:"Caturtho'dhyāyaḥ",topic:"लौकिकछन्दांसि (पूर्वार्धम्) — Classical Metres I"},
-  5:{dev:"पञ्चमोऽध्यायः",iast:"Pañcamo'dhyāyaḥ",topic:"लौकिकछन्दांसि (उत्तरार्धम्) — Classical Metres II"},
-  6:{dev:"षष्ठोऽध्यायः",iast:"Ṣaṣṭho'dhyāyaḥ",topic:"वृत्तप्रकरणम् (पूर्वार्धम्) — Metre Patterns I"},
-  7:{dev:"सप्तमोऽध्यायः",iast:"Saptamo'dhyāyaḥ",topic:"वृत्तप्रकरणम् (उत्तरार्धम्) — Metre Patterns II"},
-  8:{dev:"अष्टमोऽध्यायः",iast:"Aṣṭamo'dhyāyaḥ",topic:"प्रत्ययप्रकरणम् — Combinatorics & Binary Algorithms"},
+  1:{dev:"प्रथमोऽध्यायः",iast:"Prathamo'dhyāyaḥ"},
+  2:{dev:"द्वितीयोऽध्यायः",iast:"Dvitīyo'dhyāyaḥ"},
+  3:{dev:"तृतीयोऽध्यायः",iast:"Tṛtīyo'dhyāyaḥ"},
+  4:{dev:"चतुर्थोऽध्यायः",iast:"Caturtho'dhyāyaḥ"},
+  5:{dev:"पञ्चमोऽध्यायः",iast:"Pañcamo'dhyāyaḥ"},
+  6:{dev:"षष्ठोऽध्यायः",iast:"Ṣaṣṭho'dhyāyaḥ"},
+  7:{dev:"सप्तमोऽध्यायः",iast:"Saptamo'dhyāyaḥ"},
+  8:{dev:"अष्टमोऽध्यायः",iast:"Aṣṭamo'dhyāyaḥ"},
 };
 
 /* ── Load data ── */
@@ -279,9 +279,9 @@ function enterApp(){
 /* ── Sidebar ── */
 function buildSidebar(){
   const nav=document.getElementById('sidebar');
-  let h=`<div class="nav-head">सूची · Contents</div>
+  let h=`<div class="nav-head">सूची</div>
     <div class="nav-a" id="nav-home" onclick="showAdhyayaList()">॰ अध्यायसूची</div>
-    <div class="nav-head">अध्यायाः · Adhyāyāḥ</div>`;
+    <div class="nav-head">अध्यायाः</div>`;
   for(let a=1;a<=8;a++){
     const m=ADHYAYA_META[a];
     h+=`<div class="nav-a" id="nav-a${a}" onclick="onlyToggleAdhyaya(event,${a})" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer">
@@ -296,8 +296,8 @@ function buildSidebar(){
   }
   h+=`<div class="nav-head">अन्यत् · More</div>
     <div class="nav-a" id="nav-vyakhya" onclick="showVyakhya()">॰ व्याख्यान्वेषणम्</div>
-    <div class="nav-a" id="nav-install" onclick="showInstall()">॰ ऐपरूपेण स्थापयतु</div>
-    <div class="nav-a" id="nav-about" onclick="showAbout()">॰ अस्माकम् विषये</div>
+    <div class="nav-a" id="nav-install" onclick="showInstall()">॰ ऍपरूपेण स्थापयतु</div>
+    <div class="nav-a" id="nav-about" onclick="showAbout()">॰ अस्माकं विषये</div>
     <div class="nav-a" id="nav-feedback" onclick="showFeedback()">॰ प्रतिक्रिया</div>`;
   nav.innerHTML=h;
   _wrapNav();
@@ -475,7 +475,7 @@ function doSearch(){
   const q=document.getElementById('q').value.trim();
   if(!q)return;
   const hits=_searchSutras(q);
-  document.getElementById('sr-title').textContent='खोज-परिणामाः · Search Results';
+  document.getElementById('sr-title').textContent='परिणामाः · Search Results';
   document.getElementById('sr-sub').textContent='"'+q+'" — '+_d(hits.length)+' परिणामाः';
   const hl=t=>{
     try{return t.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),m=>`<mark>${m}</mark>`);}
@@ -557,7 +557,7 @@ function showFeedback(){ closeSidebar(); showView('view-feedback'); setNavActive
 function submitFeedback(){
   const name=document.getElementById('fb-name').value.trim();
   const msg=document.getElementById('fb-msg').value.trim();
-  if(!msg){alert('कृपया सन्देशं लिखतु।');return;}
+  if(!msg){alert('Please write your feedback.');return;}
   const to='hackerbachcha420@gmail.com';
   const subject=encodeURIComponent('Correction / Feedback — Piṅgala Chandaḥśāstram');
   const body=encodeURIComponent((name?'From: '+name+'\n\n':'')+msg);
