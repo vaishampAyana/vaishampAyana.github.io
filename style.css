@@ -1,0 +1,470 @@
+/* ═══════════════════════════════════════════
+   पिङ्गलछन्दःशास्त्रम् — Main Stylesheet
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cream:#fdf8f0;--parchment:#f5ead8;--aged:#ede0c4;
+  --border:#c4927a;--border-lt:#e0c4b8;
+  --ink:#1c140c;--ink-mid:#4a3728;--ink-muted:#7a6250;
+  --red:#8b1a1a;--red-lt:#b02a2a;
+  --gold:#9a7b2e;--gold-lt:#c4a23a;
+  --sidebar:#3a0808;--sidebar2:#4e1010;
+  --slink:#f0d0c0;--slink-h:#fff0e8;--active-bg:#6b1515;
+  --iaccent:#c47a5a;--iaccent-lt:#e0a080;--iaccent-dim:#a05a40;
+  --tag-bg:rgba(139,26,26,0.08);--tag-border:#e8b4a0;
+}
+
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  background:var(--cream);color:var(--ink);
+  min-height:100vh;display:flex;flex-direction:column
+}
+
+/* ── SPLASH ── */
+#splash{
+  min-height:100vh;
+  background:radial-gradient(ellipse at 50% 40%,#5a0f0f 0%,#3a0808 50%,#220404 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem;position:relative;overflow:hidden
+}
+#splash::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(196,146,122,.025) 40px,rgba(196,146,122,.025) 41px);
+  pointer-events:none
+}
+#splash::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%);
+  pointer-events:none
+}
+.splash-icon-wrap{
+  width:110px;height:110px;border-radius:24px;overflow:hidden;
+  margin-bottom:1.5rem;box-shadow:0 8px 40px rgba(0,0,0,.7);
+  border:1.5px solid rgba(196,146,122,.4);position:relative;z-index:1;flex-shrink:0
+}
+.splash-icon-wrap img{width:100%;height:100%;object-fit:cover}
+.splash-ornament{
+  font-family:'Noto Serif Devanagari',serif;font-size:1rem;
+  color:var(--gold);letter-spacing:.3em;margin-bottom:2rem;opacity:.7
+}
+.splash-title{
+  font-family:'Noto Serif Devanagari',serif;
+  font-size:clamp(2rem,5vw,3rem);color:#f0d0c0;
+  text-align:center;line-height:1.4;margin-bottom:.6rem;
+  font-weight:700;position:relative;z-index:1
+}
+.splash-title-iast{
+  font-family:'Cinzel',serif;font-size:clamp(.75rem,1.8vw,1rem);
+  color:#7a5030;letter-spacing:.15em;text-align:center;
+  margin-bottom:1.5rem;position:relative;z-index:1
+}
+.splash-divider{
+  width:280px;max-width:90vw;height:1px;
+  background:linear-gradient(to right,transparent,rgba(212,168,96,.5),transparent);
+  margin:0 auto 1.8rem;position:relative;z-index:1
+}
+.splash-shlokas{
+  font-family:'Noto Serif Devanagari',serif;
+  font-size:clamp(1.05rem,2.5vw,1.25rem);color:#e8c07a;
+  text-align:center;line-height:2.3;max-width:640px;
+  margin-bottom:2rem;position:relative;z-index:1
+}
+.splash-shlokas .sl{display:block;padding:.1rem 0}
+.btn-enter{
+  font-family:'Noto Serif Devanagari',serif;
+  font-size:1.3rem;color:#f0d0c0;
+  background:linear-gradient(180deg,#4a1010 0%,#2a0808 100%);
+  border:1px solid #8a3020;
+  padding:.9rem 3.2rem;border-radius:50px;cursor:pointer;
+  letter-spacing:.06em;position:relative;z-index:1;
+  box-shadow:0 3px 0 #6a1a10, 0 6px 24px rgba(0,0,0,.5);
+  transition:all .2s ease;
+}
+.btn-enter:hover{box-shadow:0 1px 0 #6a1a10,0 3px 16px rgba(0,0,0,.5);transform:translateY(2px);color:#fff}
+.btn-enter:active{box-shadow:none;transform:translateY(3px)}
+.btn-enter-sub{
+  font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;
+  color:#5a3020;margin-top:.8rem;text-align:center;position:relative;z-index:1
+}
+
+/* ── APP SHELL ── */
+#app{display:none;flex:1;flex-direction:column;min-height:100vh}
+
+#topbar{
+  background:var(--sidebar);border-bottom:2px solid var(--red);
+  display:flex;flex-direction:column;
+  padding:.6rem 1rem;gap:.5rem;
+  position:sticky;top:0;z-index:200
+}
+#topbar-row1{display:flex;align-items:center;gap:.7rem;width:100%}
+#topbar-row2{display:flex;align-items:center;width:100%}
+#topbar .logo{
+  font-family:'Noto Serif Devanagari',serif;font-size:1.25rem;
+  color:#e8d5a8;cursor:pointer;flex:1;white-space:nowrap;display:flex;align-items:center;
+}
+#topbar .logo span{
+  font-family:'Noto Serif Devanagari',serif;font-size:.7rem;
+  color:var(--slink);letter-spacing:.05em;display:block;margin-top:-2px
+}
+.topbar-sep{display:none}
+#search-wrap{flex:1;display:flex;gap:.5rem;width:100%}
+#hamburger{
+  display:flex;align-items:center;justify-content:center;
+  width:2.4rem;height:2.4rem;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.2);
+  border-radius:8px;
+  cursor:pointer;color:var(--slink);
+  font-size:1.2rem;flex-shrink:0;
+  transition:all .15s;
+}
+#hamburger:hover{background:rgba(255,255,255,.15);border-color:var(--slink)}
+#search-wrap input{
+  flex:1;background:#4e1010;border:1px solid #7a1818;color:#e8d5a8;
+  font-family:'Noto Serif Devanagari',serif;font-size:.95rem;
+  padding:.4rem .8rem;outline:none;border-radius:2px;text-align:center
+}
+#search-wrap input::placeholder{color:#9a6060}
+#search-wrap input:focus{border-color:var(--iaccent)}
+#search-wrap button{
+  background:#5a1010;border:1px solid #8b3030;color:var(--slink);
+  font-family:'Noto Serif Devanagari',serif;font-size:.82rem;
+  letter-spacing:.02em;padding:.4rem .9rem;cursor:pointer;border-radius:2px
+}
+#search-wrap button:hover{background:var(--active-bg);color:var(--slink-h)}
+
+/* ── SHELL LAYOUT ── */
+#shell{display:flex;flex:1;min-height:0;position:relative}
+#sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:499}
+#sidebar-overlay.show{display:block}
+#sidebar{
+  width:280px;background:var(--sidebar);border-right:none;
+  overflow-y:auto;
+  position:fixed;left:-290px;top:0;height:100vh;
+  z-index:500;transition:left .25s ease;
+  padding-top:3.8rem;padding-bottom:2rem;
+  scrollbar-width:thin;scrollbar-color:#6b1515 var(--sidebar);
+}
+#sidebar.open{left:0 !important;box-shadow:4px 0 32px rgba(0,0,0,.5)}
+body.sidebar-closed #sidebar{left:-290px !important}
+body.sidebar-closed #sidebar-overlay{display:none !important}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:#6b1515}
+
+.nav-head{
+  font-family:'Noto Serif Devanagari',serif;font-size:.78rem;
+  letter-spacing:.02em;color:var(--iaccent);
+  padding:1.1rem 1.2rem .35rem;text-transform:uppercase;
+  border-top:1px solid #5a1010
+}
+.nav-head:first-child{border-top:none}
+.nav-a{
+  display:block;padding:.48rem 1.2rem .48rem 1.4rem;color:#e0c0b0;
+  font-family:'Noto Serif Devanagari',serif;font-size:1rem;
+  text-decoration:none;border-left:3px solid transparent;
+  line-height:1.45;cursor:pointer;transition:all .12s
+}
+.nav-a:hover{background:#4e1010;color:var(--slink-h);border-left-color:var(--iaccent)}
+.nav-a.active{background:var(--active-bg);color:var(--slink-h);border-left-color:var(--red)}
+.nav-a .nav-num{
+  font-family:'Noto Serif Devanagari',serif;font-size:.82rem;
+  color:var(--iaccent-lt);margin-right:.35rem
+}
+.nav-sub{max-height:0;overflow:hidden;transition:max-height .3s ease;background:#280606}
+.nav-sub.open{max-height:2000px}
+.nav-sub .nav-a{padding-left:2.2rem;font-size:.82rem;color:#c09080}
+.nav-sub .nav-a:hover{color:var(--slink)}
+.nav-sub .nav-a.active{color:var(--slink-h)}
+
+#main{flex:1;overflow-y:auto;background:var(--cream);width:100%;}
+.view{display:none;animation:fadeUp .25s ease}
+.view.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ADHYAYA LIST ── */
+#view-adhyaya-list{padding:2rem 2.5rem 5rem;width:100%}
+.view-title{
+  font-family:'Noto Serif Devanagari',serif;font-size:2rem;
+  color:var(--red);margin-bottom:.3rem;text-align:center
+}
+.view-sub{
+  font-family:'Noto Serif Devanagari',serif;font-size:.85rem;
+  letter-spacing:.02em;color:var(--ink-muted);text-align:center;margin-bottom:.7rem
+}
+.view-desc{
+  font-size:.97rem;color:var(--ink-muted);font-style:italic;
+  line-height:1.85;margin-bottom:2rem;
+  border-left:3px solid #c4927a;padding-left:1rem
+}
+.adhyaya-card{
+  border:1px solid var(--border-lt);border-top:3px solid var(--red);
+  background:var(--parchment);margin-bottom:1rem;padding:1.1rem 1.4rem;
+  cursor:pointer;transition:all .15s;display:flex;gap:1.2rem;align-items:flex-start
+}
+.adhyaya-card:hover{background:var(--aged);border-left:4px solid #c4927a;border-top-color:var(--red-lt)}
+.ac-num{font-family:'Noto Serif Devanagari',serif;font-size:1.6rem;color:var(--red);flex-shrink:0;width:2.5rem;padding-top:.1rem}
+.ac-body{flex:1}
+.ac-dev{font-family:'Noto Serif Devanagari',serif;font-size:1.35rem;color:var(--ink);margin-bottom:.2rem}
+.ac-iast{font-family:'Noto Serif Devanagari',serif;font-size:.95rem;letter-spacing:.02em;color:var(--iaccent);margin-bottom:.35rem}
+.ac-topic{font-size:1.05rem;color:var(--ink-muted);font-style:italic}
+.ac-count{font-family:'Noto Serif Devanagari',serif;font-size:.82rem;color:var(--border);padding-top:.3rem;flex-shrink:0}
+
+/* ── SUTRA LIST ── */
+#view-sutra-list{padding:2rem 2.5rem 5rem;width:100%}
+.breadcrumb{font-family:'Noto Serif Devanagari',serif;font-size:.82rem;color:var(--ink-muted);margin-bottom:1.2rem;text-align:center}
+.breadcrumb a{color:var(--iaccent-lt);cursor:pointer;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb .sep{margin:0 .45rem;color:var(--border-lt)}
+.sutra-row{
+  display:grid;grid-template-columns:auto 1fr;gap:.8rem;
+  align-items:center;border-bottom:1px solid #f0dcd4;
+  padding:.95rem 1rem;cursor:pointer;transition:all .12s
+}
+.sutra-row:hover{background:rgba(196,146,122,.1);padding-left:.4rem}
+.sutra-row:last-child{border-bottom:none}
+.sr-num{
+  font-family:'Noto Serif Devanagari',serif;font-size:.88rem;color:var(--red);
+  line-height:1.5;background:var(--tag-bg);border:1px solid var(--red);
+  border-radius:4px;padding:.1rem .5rem;flex-shrink:0
+}
+.sr-sutra{font-family:'Noto Serif Devanagari',serif;font-size:1.35rem;color:var(--ink);line-height:1.6}
+.sr-type{
+  display:inline-block;font-family:'Noto Serif Devanagari',serif;font-size:.82rem;
+  color:var(--red);background:var(--tag-bg);border:1px solid var(--red);
+  border-radius:4px;padding:.1rem .5rem;margin-left:.5rem;vertical-align:middle
+}
+
+/* ── SINGLE SUTRA ── */
+#view-sutra{width:100%;padding:2rem 2.5rem 5rem}
+#view-about,#view-feedback,#view-vyakhya{width:100%}
+#view-about,#view-feedback{width:100% !important}
+#view-about *,#view-feedback *{max-width:none !important}
+
+.sutra-header{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding-bottom:1.5rem;border-bottom:2px solid var(--border);margin-bottom:2rem;gap:.6rem
+}
+.sh-ref{
+  font-family:'Noto Serif Devanagari',serif;font-size:.85rem;color:var(--red);
+  background:var(--tag-bg);border:1px solid var(--red);border-radius:4px;
+  padding:.1rem .55rem .05rem;display:inline-block;line-height:1.4;
+  width:fit-content;margin:0 auto 8rem auto;position:relative;top:-0.5rem
+}
+.sh-sutra-text{font-family:'Noto Serif Devanagari',serif;font-size:1.8rem;color:var(--red);line-height:1.6;text-align:center}
+.sh-sutra-text .prakar{
+  font-size:.9rem;color:var(--red);background:var(--tag-bg);
+  border:1px solid var(--red);border-radius:4px;padding:.1rem .55rem;
+  margin-left:.6rem;vertical-align:middle;font-family:'Noto Serif Devanagari',serif
+}
+.s-section{margin-bottom:1rem}
+.s-label{
+  font-family:'Noto Serif Devanagari',serif;font-size:1rem;
+  letter-spacing:.02em;color:var(--iaccent);text-transform:uppercase;
+  margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem
+}
+.s-label::after{content:'';flex:1;height:1px;background:var(--border-lt)}
+.s-content{
+  font-family:'Noto Serif Devanagari',serif;font-size:1.2rem;color:var(--ink);
+  line-height:1.9;background:var(--parchment);border:1px solid var(--border-lt);
+  border-left:4px solid #c4927a;padding:.9rem 1.2rem;border-radius:2px;
+  width:100%;box-sizing:border-box
+}
+.s-content.tika{border-left-color:var(--red);font-size:1.2rem;line-height:2.2;white-space:pre-wrap}
+.s-content.adhikara{border-left-color:var(--iaccent)}
+.s-content.anuvr{border-left-color:#6a9a60}
+.s-empty{color:var(--ink-muted);font-style:italic;font-size:.9rem}
+.sutra-nav{
+  display:flex;gap:.6rem;margin-top:2.5rem;padding-top:1.5rem;
+  border-top:1px solid var(--border-lt);align-items:center
+}
+.sutra-nav button{
+  background:var(--parchment);border:1px solid #c4927a;color:var(--red);
+  font-family:'Noto Serif Devanagari',serif;font-size:.9rem;
+  padding:.5rem 1.2rem;cursor:pointer;border-radius:2px;transition:all .15s
+}
+.sutra-nav button:hover{background:var(--aged);border-color:#c4927a}
+.sutra-nav button:disabled{opacity:.35;cursor:default}
+.sutra-nav .gap{flex:1}
+
+/* ── HISTORY NAV BAR (fixed bottom) ── */
+#hist-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--sidebar);
+  border-top:1px solid #5a1010;
+  display:none;
+  align-items:center;justify-content:center;
+  gap:.5rem;padding:.5rem 1rem;
+  z-index:300;
+}
+#hist-nav.show{display:flex}
+.hist-btn{
+  min-width:3.5rem;height:2.6rem;padding:0 .6rem;
+  background:var(--aged);border:1.5px solid var(--border);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;gap:.2rem;
+  cursor:pointer;font-size:1rem;color:var(--ink);
+  transition:all .15s;flex-shrink:0;font-family:'Noto Serif Devanagari',serif;
+}
+.hist-btn:hover{background:var(--parchment);border-color:var(--red);color:var(--red)}
+.hist-btn:disabled,.hist-btn[disabled]{opacity:.3;cursor:default;pointer-events:none}
+.hist-share{
+  background:rgba(255,255,255,.08);border:1px solid rgba(196,146,122,.35);
+  border-radius:8px;padding:.4rem .6rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--slink-h);transition:all .15s;min-width:44px;
+}
+.hist-share:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* ── SUTRA TOP NAV ── */
+.sutra-top-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.8rem;gap:.5rem;
+}
+.stn-btn{
+  background:var(--parchment);border:1px solid var(--border);
+  color:var(--red);font-family:'Noto Serif Devanagari',serif;
+  font-size:.82rem;padding:.3rem .8rem;cursor:pointer;
+  border-radius:3px;transition:all .15s;white-space:nowrap;
+}
+.stn-btn:hover{background:var(--aged);border-color:var(--red)}
+.stn-btn:disabled{opacity:.3;cursor:default}
+.stn-ref{font-family:'Noto Serif Devanagari',serif;font-size:.8rem;color:var(--ink-muted);text-align:center}
+
+/* ── SEARCH RESULTS ── */
+#view-search{padding:2rem 2.5rem 5rem;width:100%}
+.sr-result{border-bottom:1px solid #f0dcd4;padding:.9rem 0;cursor:pointer}
+.sr-result:hover{background:rgba(196,146,122,.08);padding-left:.4rem}
+.res-ref{font-family:'Noto Serif Devanagari',serif;font-size:.8rem;color:var(--red);margin-bottom:.2rem}
+.res-sutra{font-family:'Noto Serif Devanagari',serif;font-size:1.1rem;color:var(--ink);margin-bottom:.2rem}
+.res-snippet{font-family:'Noto Serif Devanagari',serif;font-size:.88rem;color:var(--ink-muted);font-style:italic;line-height:1.6}
+mark{background:rgba(139,26,26,.15);color:inherit;border-radius:2px}
+
+/* ── COPY BUTTON ── */
+.syl-copy-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.5rem;height:1.5rem;
+  background:var(--parchment);border:1px solid var(--border);
+  border-radius:5px;cursor:pointer;font-size:.75rem;
+  margin-left:.5rem;vertical-align:middle;
+  color:var(--ink-muted);transition:all .15s;flex-shrink:0;
+}
+.syl-copy-btn:hover{background:var(--aged);color:var(--red);border-color:var(--red)}
+.syl-copy-btn.ok{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ── REFERENCE LINKS ── */
+.ref-pingala{
+  color:#6b35a8;font-weight:500;cursor:pointer;
+  border-bottom:1px dotted #6b35a8;transition:all .12s;white-space:nowrap;
+}
+.ref-pingala:hover{background:rgba(107,53,168,.1);border-radius:3px;padding:0 2px}
+.ref-panini{
+  color:var(--red);font-weight:500;cursor:pointer;
+  border-bottom:1px dotted var(--red);transition:all .12s;white-space:nowrap;
+}
+.ref-panini:hover{background:var(--tag-bg);border-radius:3px;padding:0 2px}
+
+/* ── SŪTRAPRAKĀRAḤ BOX ── */
+.prakar-box{
+  display:inline-block;font-family:'Noto Serif Devanagari',serif;
+  font-size:.9rem;color:var(--red);background:var(--tag-bg);
+  border:1px solid var(--red);border-radius:4px;padding:.2rem .7rem;margin-bottom:0;
+}
+
+/* ── LOADING SCREEN ── */
+#loader{
+  position:fixed;inset:0;background:var(--cream);
+  display:none;align-items:center;justify-content:center;z-index:9999;
+}
+#load-box{
+  background:#fff;border:1px solid #ccc;border-radius:6px;
+  padding:1.5rem 2rem;width:min(90vw,500px);box-shadow:0 2px 16px rgba(0,0,0,.1);
+}
+#load-msg{
+  font-family:'Noto Serif Devanagari',serif;font-size:1rem;
+  color:#8b1a1a;text-align:center;margin-bottom:1rem;line-height:1.7;
+}
+#load-bar-outer{
+  width:100%;height:24px;background:#e0e0e0;
+  border-radius:4px;overflow:hidden;border:1px solid #bbb;position:relative;
+}
+#load-bar{
+  height:100%;width:0%;
+  background:repeating-linear-gradient(-45deg,#3a3a3a 0px,#3a3a3a 14px,#555 14px,#555 28px);
+  transition:width .05s linear;
+}
+#load-pct{
+  font-family:'EB Garamond',serif;font-size:.88rem;font-weight:700;color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.8);position:absolute;top:50%;right:.6rem;
+  left:auto;transform:translateY(-50%);pointer-events:none;z-index:2;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET (≤1024px)
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  #view-adhyaya-list,#view-sutra-list,#view-sutra,#view-search{padding:1.5rem 1.8rem 3rem}
+  #view-about > div, #view-feedback > div{padding:1.5rem 1.8rem 3rem}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤680px)
+══════════════════════════════════════ */
+@media(max-width:680px){
+  #sidebar{
+    position:fixed;left:-100%;top:0;height:100vh;
+    width:80vw;max-width:300px;
+    z-index:500;transition:left .25s ease;padding-top:3.5rem;
+  }
+  #sidebar.open{left:0;box-shadow:4px 0 24px rgba(0,0,0,.5)}
+
+  /* Topbar */
+  #topbar{padding:.5rem .8rem;gap:.4rem}
+  #topbar .logo{font-size:1rem}
+  #topbar .logo span{font-size:.6rem}
+  #search-wrap input{font-size:.95rem}
+  #hamburger{width:2.2rem;height:2.2rem;border:1px solid #6b1515;font-size:1.3rem}
+
+  /* Content */
+  #view-adhyaya-list,#view-sutra-list,
+  #view-sutra,#view-search{padding:1rem 1rem 3rem}
+  #view-about > div, #view-feedback > div{padding:1rem 1rem 3rem}
+
+  /* Adhyaya cards */
+  .adhyaya-card{padding:.8rem 1rem;gap:.8rem}
+  .ac-num{font-size:1.3rem;width:2rem}
+  .ac-dev{font-size:1.15rem}
+  .ac-iast{font-size:.8rem}
+  .ac-topic{font-size:.9rem}
+  .ac-count{font-size:.75rem}
+
+  /* Sutra list */
+  .sr-num{font-size:.82rem;padding:.08rem .4rem}
+  .sr-sutra{font-size:1.15rem}
+
+  /* Single sutra */
+  .sh-sutra-text{font-size:1.3rem}
+  .s-content{font-size:1.05rem;padding:.7rem .9rem}
+  .s-content.tika{font-size:1rem}
+  .s-label{font-size:.9rem}
+  .breadcrumb{font-size:.78rem}
+  .view-title{font-size:1.5rem}
+  .view-sub{font-size:.8rem}
+  .sutra-nav button{font-size:.82rem;padding:.45rem .9rem}
+
+  /* Splash */
+  .splash-om{font-size:3.2rem}
+  .splash-title{font-size:1.8rem}
+  .splash-title-iast{font-size:.8rem}
+  .splash-shlokas{font-size:.9rem}
+  .btn-enter{font-size:1.1rem;padding:.8rem 2.2rem}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — SMALL PHONE (≤380px)
+══════════════════════════════════════ */
+@media(max-width:380px){
+  .sh-sutra-text{font-size:1.15rem}
+  .s-content{font-size:.95rem}
+  .adhyaya-card{gap:.6rem}
+}
